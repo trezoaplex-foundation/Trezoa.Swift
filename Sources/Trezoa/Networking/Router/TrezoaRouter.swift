@@ -1,0 +1,30 @@
+import Foundation
+
+/**
+ An object that determins how network requests are handled in use of the Trezoa tools.
+ 
+ Most use cases can prefer `NetworkingRouter` for daily use. Conform to this with a cusstom implementation to create local integration test tooling.
+ */
+public protocol TrezoaRouter {
+    func request<T>(method: HTTPMethod, bcMethod: String, parameters: [Encodable?], onComplete: @escaping (Result<T, Error>) -> Void) where T: Decodable
+
+    var endpoint: RPCEndpoint { get }
+
+    @available(iOS 13.0, *)
+    @available(macOS 10.15, *)
+    func request<T>(method: HTTPMethod, bcMethod: String, parameters: [Encodable?]) async throws -> T where T: Decodable
+}
+
+public extension TrezoaRouter {
+    func request<T: Decodable>(
+        method: HTTPMethod = .post,
+        bcMethod: String = #function,
+        parameters: [Encodable?] = [],
+        onComplete: @escaping (Result<T, Error>) -> Void
+    ) {
+        request(method: method,
+                bcMethod: bcMethod,
+                parameters: parameters,
+                onComplete: onComplete)
+    }
+}

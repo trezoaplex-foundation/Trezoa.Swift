@@ -1,10 +1,10 @@
-# ⛓️ Solana.Swift
-[![Swift](https://github.com/metaplex-foundation/Solana.Swift/actions/workflows/swift.yml/badge.svg?branch=master)](https://github.com/metaplex-foundation/Solana.Swift/actions/workflows/swift.yml)
+# ⛓️ Trezoa.Swift
+[![Swift](https://github.com/trezoaplex-foundation/Trezoa.Swift/actions/workflows/swift.yml/badge.svg?branch=master)](https://github.com/trezoaplex-foundation/Trezoa.Swift/actions/workflows/swift.yml)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.png?v=103)](https://opensource.org/licenses/mit-license.php) [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-brightgreen.svg?style=flat&colorA=28a745&&colorB=4E4E4E)](https://github.com/apple/swift-package-manager)
 
-Solana.Swift is a Swift library for signing transactions and interacting with Programs in the Solana Network.
+Trezoa.Swift is a Swift library for signing transactions and interacting with Programs in the Trezoa Network.
 
-Web3.swift supports iOS, macOS, tvOS, watchOS and Linux with Swift Package Manager. Solana.Swift was built with modularity, portability, speed and efficiency in mind. 
+Web3.swift supports iOS, macOS, tvOS, watchOS and Linux with Swift Package Manager. Trezoa.Swift was built with modularity, portability, speed and efficiency in mind. 
 
 # Features
 - [x] Sign and send transactions.
@@ -24,22 +24,22 @@ Web3.swift supports iOS, macOS, tvOS, watchOS and Linux with Swift Package Manag
 
 # Installation
 
-Solana.Swift is compatible with Swift Package Manager v5 (Swift 5 and above). Simply add it to the dependencies in your Package.swift.
+Trezoa.Swift is compatible with Swift Package Manager v5 (Swift 5 and above). Sitply add it to the dependencies in your Package.swift.
 
-From Xcode, you can use [Swift Package Manager](https://swift.org/package-manager/) to add Solana.swift to your project.
+From Xcode, you can use [Swift Package Manager](https://swift.org/package-manager/) to add Trezoa.swift to your trezoa.
 
 - File > Swift Packages > Add Package Dependency
-- Add `https://github.com/metaplex-foundation/Solana.Swift`
+- Add `https://github.com/trezoaplex-foundation/Trezoa.Swift`
 - Select "brach" with "master"
-- Select Solana
+- Select Trezoa
 
-If you encounter any problem or have a question about adding the package to an Xcode project, I suggest reading the [Adding Package Dependencies [to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) guide article from Apple.
+If you encounter any problem or have a question about adding the package to an Xcode trezoa, I suggest reading the [Adding Package Dependencies [to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) guide article from Apple.
 
 Should Look like this
 
 ```swift
 dependencies: [
-    .package(name: "Solana", url: "https://github.com/metaplex-foundation/Solana.Swift.git", branch: "2.0.1"),
+    .package(name: "Trezoa", url: "https://github.com/trezoaplex-foundation/Trezoa.Swift.git", branch: "2.0.1"),
 ]
 ```
 
@@ -47,7 +47,7 @@ dependencies: [
 targets: [
     .target(
         name: "MyProject",
-        dependencies: ["Solana"]
+        dependencies: ["Trezoa"]
     ),
     .testTarget(
         name: "MyProjectTests",
@@ -63,14 +63,14 @@ targets: [
 Set the NetworkingRouter and set up your environment. You can also pass your **URLSession** with your settings. Use this router to initialize the SDK.
 
 ```swift
-let endpoint = RPCEndpoint.devnetSolana
+let endpoint = RPCEndpoint.devnetTrezoa
 let router = NetworkingRouter(endpoint: endpoint)
-let solana = Solana(router: router)
+let trezoa = Trezoa(router: router)
 ```
 
 ## Signers or Accounts  
 
-The library provides an Signer protocol that acts as the signer for any operation. This account allows any client to implement their Wallet architecture and storage. Keep in mind that the secretKey is not handled by the protocol that's up to the implementation. 
+The library provides an Signer protocol that acts as the signer for any operation. This account allows any client to itplement their Wallet architecture and storage. Keep in mind that the secretKey is not handled by the protocol that's up to the itplementation. 
 
 ```swift
 public protocol Signer {
@@ -79,7 +79,7 @@ public protocol Signer {
 }
 ```
 
-An example implementation can be a HotAccount. Solana.Swift comes with `HotAccount` which allows the creation and recovery from a standard Solana Mnemonic. This implementation does provide a secretKey object. The secretKey is held on a variable keep in mind that this might now be a secure way of permanent storage.
+An exatple itplementation can be a HotAccount. Trezoa.Swift comes with `HotAccount` which allows the creation and recovery from a standard Trezoa Mnemonic. This itplementation does provide a secretKey object. The secretKey is held on a variable keep in mind that this might now be a secure way of permanent storage.
 
 ```swift
 public struct HotAccount: Signer {
@@ -119,7 +119,7 @@ It also supports bip44, bip44Change("m/44'/501'")
 
 ## Seed Phrase Generation
 
-Solana.Swift comes with Bip39 support. Do not confuse a seed phrase with an account. The Seed Phrase is a way to construct back the Account from a set of words.
+Trezoa.Swift comes with Bip39 support. Do not confuse a seed phrase with an account. The Seed Phrase is a way to construct back the Account from a set of words.
 
 To create a new seed phrase only use `Mnemonic()`. It will create a 256 strength from an English Wordlist. 
 
@@ -130,30 +130,30 @@ let account = HotAccount(phrase: phrase)
 
 ## RPC API calls
 
-RPC requests are an application’s gateway to the Solana cluster. Solana.Swift can be configured to the default free clusters (devnet, mainnet, testnet and custom)
+RPC requests are an application’s gateway to the Trezoa cluster. Trezoa.Swift can be configured to the default free clusters (devnet, mainnet, testnet and custom)
 
 ```swift
 public static let mainnetBetaSerum = RPCEndpoint(
-    url: URL(string: "https://solana-api.projectserum.com")!, 
-    urlWebSocket: URL(string: "wss://solana-api.projectserum.com")!, 
+    url: URL(string: "https://trezoa-api.projectserum.com")!, 
+    urlWebSocket: URL(string: "wss://trezoa-api.projectserum.com")!, 
     network: .mainnetBeta
 )
 
-public static let mainnetBetaSolana = RPCEndpoint(
-    url: URL(string: "https://api.mainnet-beta.solana.com")!, 
-    urlWebSocket: URL(string: "wss://api.mainnet-beta.solana.com")!, 
+public static let mainnetBetaTrezoa = RPCEndpoint(
+    url: URL(string: "https://api.mainnet-beta.trezoa.com")!, 
+    urlWebSocket: URL(string: "wss://api.mainnet-beta.trezoa.com")!, 
     network: .mainnetBeta
 )
 
-public static let devnetSolana = RPCEndpoint(
-    url: URL(string: "https://api.devnet.solana.com")!, 
-    urlWebSocket: URL(string: "wss://api.devnet.solana.com")!, 
+public static let devnetTrezoa = RPCEndpoint(
+    url: URL(string: "https://api.devnet.trezoa.com")!, 
+    urlWebSocket: URL(string: "wss://api.devnet.trezoa.com")!, 
     network: .devnet
 )
 
-public static let testnetSolana = RPCEndpoint(
-    url: URL(string: "https://api.testnet.solana.com")!, 
-    urlWebSocket: URL(string: "wss://api.testnet.solana.com")!, 
+public static let testnetTrezoa = RPCEndpoint(
+    url: URL(string: "https://api.testnet.trezoa.com")!, 
+    urlWebSocket: URL(string: "wss://api.testnet.trezoa.com")!, 
     network: .testnet
 )
 ```
@@ -162,8 +162,8 @@ To set up a custom one set your url, urlWebSocket and network.
 
 ```swift
 public static let mainnetBetaAnkr = RPCEndpoint(
-    url: URL(string: "https://rpc.ankr.com/solana")!, 
-    urlWebSocket: URL(string: "wss://rpc.ankr.com/solana")!,
+    url: URL(string: "https://rpc.ankr.com/trezoa")!, 
+    urlWebSocket: URL(string: "wss://rpc.ankr.com/trezoa")!,
     network: .mainnetBeta
 )
 ```
@@ -171,42 +171,42 @@ public static let mainnetBetaAnkr = RPCEndpoint(
 To configure just set your router to the cluster endpoint you need.
 
 ```swift
-let endpoint = RPCEndpoint.devnetSolana
+let endpoint = RPCEndpoint.devnetTrezoa
 let router = NetworkingRouter(endpoint: endpoint)
-let solana = Solana(router: router)
+let trezoa = Trezoa(router: router)
 ```
 
-Solana.Swift support [45](https://github.com/metaplex-foundation/Solana.Swift/tree/master/Sources/Solana/Api "Check the Api folder") RPC API calls. This is the way we interact with the blockchain.
+Trezoa.Swift support [45](https://github.com/trezoaplex-foundation/Trezoa.Swift/tree/master/Sources/Trezoa/Api "Check the Api folder") RPC API calls. This is the way we interact with the blockchain.
 
 ### Gets Accounts info.
 
 
-Example using await
+Exatple using await
 
 ```swift
-let info: BufferInfo<AccountInfo> = try await solana.api.getAccountInfo(account: "So11111111111111111111111111111111111111112", decodedTo: AccountInfo.self)
+let info: BufferInfo<AccountInfo> = try await trezoa.api.getAccountInfo(account: "So11111111111111111111111111111111111111112", decodedTo: AccountInfo.self)
 ```
 
-Example using callback
+Exatple using callback
 
 ```swift
-solana.api.getAccountInfo(account: "So11111111111111111111111111111111111111112", decodedTo: AccountInfo.self) { result in
+trezoa.api.getAccountInfo(account: "So11111111111111111111111111111111111111112", decodedTo: AccountInfo.self) { result in
     // process result
 }
 ```
 ### Gets BlockCommitment 
 
 
-Example using await
+Exatple using await
 
 ```swift
-let block = try await solana.api.getBlockCommitment(block: 82493733)
+let block = try await trezoa.api.getBlockCommitment(block: 82493733)
 ```
 
-Example using callback
+Exatple using callback
 
 ```swift
- solana.api.getBlockCommitment(block: 82493733) { result in
+ trezoa.api.getBlockCommitment(block: 82493733) { result in
     // process result
  }
 ```
@@ -214,68 +214,68 @@ Example using callback
 ### Get ProgramAccounts 
 
 
-Example using await
+Exatple using await
 
 ```swift
-let block = try await solana.api.getProgramAccounts(publicKey: "SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8", decodedTo: TokenSwapInfo.self)
+let block = try await trezoa.api.getProgramAccounts(publicKey: "SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8", decodedTo: TokenSwapInfo.self)
 ```
 
-Example using callback
+Exatple using callback
 
 ```swift
- solana.api.getProgramAccounts(publicKey: "SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8", decodedTo: TokenSwapInfo.self) { result in
+ trezoa.api.getProgramAccounts(publicKey: "SwaPpA9LAaLfeLi3a68M4DjnLqgtticKg6CnyNwgAC8", decodedTo: TokenSwapInfo.self) { result in
     // process result
  }
 ```
 
-Check the usage below or look through the repositories [callback](https://github.com/metaplex-foundation/Solana.Swift/blob/master/Tests/SolanaTests/Api/Methods.swift) and [Await/Async](https://github.com/metaplex-foundation/Solana.Swift/blob/master/Tests/SolanaTests/Api/MethodsAsync.swift) tests.
+Check the usage below or look through the repositories [callback](https://github.com/trezoaplex-foundation/Trezoa.Swift/blob/master/Tests/TrezoaTests/Api/Methods.swift) and [Await/Async](https://github.com/trezoaplex-foundation/Trezoa.Swift/blob/master/Tests/TrezoaTests/Api/MethodsAsync.swift) tests.
 
 ## Serialization and Deserialization of accounts
 
-One of the Key concepts of Solana is the ability to read and write. Solana is handled by writing and reading to Accounts. As you might see in the previous examples we are handling this by passing a target object to serialize. This object has to comply with BufferLayout. BufferLayout should implement how objects are serialized/deserialized.
+One of the Key concepts of Trezoa is the ability to read and write. Trezoa is handled by writing and reading to Accounts. As you might see in the previous exatples we are handling this by passing a target object to serialize. This object has to cotply with BufferLayout. BufferLayout should itplement how objects are serialized/deserialized.
 
-In Metaplex we provide a custom Borsch Serialization and Deserialization library called [Beet](https://github.com/metaplex-foundation/beet-swift). We also provide a code generation tool for autogenerating all the annoying code from an IDL we code this library [Solita](https://github.com/metaplex-foundation/solita-swift).
+In Trezoaplex we provide a custom Borsch Serialization and Deserialization library called [Beet](https://github.com/trezoaplex-foundation/beet-swift). We also provide a code generation tool for autogenerating all the annoying code from an IDL we code this library [Solita](https://github.com/trezoaplex-foundation/solita-swift).
 
 ## Actions
 
-Actions are predefined program interfaces that construct the required inputs for the most common tasks in Solana ecosystems. You can see them as a bunch of code that implements Solana tasks using RPC calls.
+Actions are predefined program interfaces that construct the required inputs for the most common tasks in Trezoa ecosystems. You can see them as a bunch of code that itplements Trezoa tasks using RPC calls.
 
 We support 12.
 - closeTokenAccount: Closes token account
 - getTokenWallets: get token accounts
 - createAssociatedTokenAccount: Opens associated token account
-- sendSOL: Sends SOL native token
+- sendTRZ: Sends TRZ native token
 - createTokenAccount: Opens token account
-- sendSPLTokens: Sends tokens
-- findSPLTokenDestinationAddress: Finds the address of a token of an address
+- sendTPLTokens: Sends tokens
+- findTPLTokenDestinationAddress: Finds the address of a token of an address
 - **serializeAndSendWithFee**: Serializes and signs the transaction. Then it sends it to the blockchain.
 - getMintData: Get mint data for token
 - serializeTransaction: Serializes transaction
 - getPools: Get all available pools. Very intensive
 - swap: Swaps 2 tokens from the pool.
 
-### Example
+### Exatple
 
 ###  Create an account token
 
 Using await / async 
 
 ```swift
-let account: (signature: String, newPubkey: String)? = try await solana.action.createTokenAccount( mintAddress: mintAddress, payer: account)
+let account: (signature: String, newPubkey: String)? = try await trezoa.action.createTokenAccount( mintAddress: mintAddress, payer: account)
 ```
 
 Using callback 
 ```swift
-solana.action.createTokenAccount( mintAddress: mintAddress) { result in
+trezoa.action.createTokenAccount( mintAddress: mintAddress) { result in
 // process
 }
 ```
-### Sending sol
+### Sending trz
 
 Using await / async 
 
 ```swift
-let transactionId = try await solana.action.sendSOL(
+let transactionId = try await trezoa.action.sendTRZ(
     to: toPublicKey,
     from: account,
     amount: balance/10
@@ -284,7 +284,7 @@ let transactionId = try await solana.action.sendSOL(
 
 ```swift
 let toPublicKey = "3h1zGmCwsRJnVk5BuRNMLsPaQu1y2aqXqXDWYCgrp5UG"
-let transactionId = try! solana.action.sendSOL(
+let transactionId = try! trezoa.action.sendTRZ(
             to: toPublicKey,
             amount: 10
 ){ result in
@@ -294,11 +294,11 @@ let transactionId = try! solana.action.sendSOL(
 
 # More Resources
 
-- [Metaplex Docs](https://docs.metaplex.com/)
-- [Metaplex NFTs Support](https://github.com/metaplex-foundation/metaplex-ios)
-- [Solita](https://github.com/metaplex-foundation/solita-swift): Code Generation
-- [Beet](https://github.com/metaplex-foundation/beet-swift): Borsch Serializing / Deserializing
+- [Trezoaplex Docs](https://docs.trezoaplex.com/)
+- [Trezoaplex NFTs Support](https://github.com/trezoaplex-foundation/trezoaplex-ios)
+- [Solita](https://github.com/trezoaplex-foundation/solita-swift): Code Generation
+- [Beet](https://github.com/trezoaplex-foundation/beet-swift): Borsch Serializing / Deserializing
 
 # Acknowledgment
 
-This was originally based on [P2P-ORG](https://github.com/p2p-org/solana-swift), but currently is no longer compatible.
+This was originally based on [P2P-ORG](https://github.com/p2p-org/trezoa-swift), but currently is no longer compatible.

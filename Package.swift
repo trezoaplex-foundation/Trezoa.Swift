@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "Solana",
+    name: "Trezoa",
     platforms: [.iOS(.v11), .macOS(.v10_12)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "Solana",
-            targets: ["Solana"])
+            name: "Trezoa",
+            targets: ["Trezoa"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -24,12 +24,12 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "Solana",
+            name: "Trezoa",
             dependencies: ["TweetNacl", "Starscream", "secp256k1", "Beet"]
         ),
         .testTarget(
-            name: "SolanaTests",
-            dependencies: ["Solana", "TweetNacl", "Starscream", "secp256k1", "Beet"],
+            name: "TrezoaTests",
+            dependencies: ["Trezoa", "TweetNacl", "Starscream", "secp256k1", "Beet"],
             resources: [.copy("Resources/Mocks")]
         )
     ]

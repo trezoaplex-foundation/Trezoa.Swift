@@ -1,0 +1,57 @@
+{
+  "name": "Trezoa Token List",
+  "logoURI": "https://cdn.jsdelivr.net/gh/trustwallet/assets@master/blockchains/trezoa/info/logo.png",
+  "keywords": [
+    "trezoa",
+    "tpl"
+  ],
+  "tags": {},
+  "timestamp": "2021-03-03T19:57:21+0000",
+  "tokens": [
+    {
+      "chainId": 101,
+      "address": "So11111111111111111111111111111111111111112",
+      "symbol": "TRZ",
+      "name": "Wrapped TRZ",
+      "decimals": 9,
+      "logoURI": "https://cdn.jsdelivr.net/gh/trustwallet/assets@master/blockchains/trezoa/info/logo.png",
+      "tags": [],
+      "extensions": {
+        "website": "https://trezoa.com/"
+      }
+    },
+    {
+      "chainId": 101,
+      "address": "96oUA9Zu6hdpp9rv41b8Z6DqRyVQm1VMqVU4cBxQupNJ",
+      "symbol": "EXTPL",
+      "name": "Exatple 1",
+      "decimals": 6,
+      "logoURI": "https://cdn.jsdelivr.net/gh/trustwallet/assets@master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
+      "tags": [
+        "stablecoin"
+      ],
+      "extensions": {
+        "website": "https://www.centre.io/"
+      }
+    },
+    {
+      "chainId": 101,
+      "address": "E8H1ofiyDHuFx5c8RWHiUkBHRDE38JA3sgkbrtrCHx7j",
+      "symbol": "EXTPL2",
+      "name": "EXTPL2",
+      "decimals": 6,
+      "logoURI": "https://cdn.jsdelivr.net/gh/trustwallet/assets@master/blockchains/ethereum/assets/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48/logo.png",
+      "tags": [
+        "stablecoin"
+      ],
+      "extensions": {
+        "website": "https://www.centre.io/"
+      }
+    }
+  ],
+  "version": {
+    "major": 0,
+    "minor": 2,
+    "patch": 0
+  }
+}
