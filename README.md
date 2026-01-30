@@ -134,8 +134,8 @@ RPC requests are an application’s gateway to the Trezoa cluster. Trezoa.Swift 
 
 ```swift
 public static let mainnetBetaSerum = RPCEndpoint(
-    url: URL(string: "https://trezoa-api.projectserum.com")!, 
-    urlWebSocket: URL(string: "wss://trezoa-api.projectserum.com")!, 
+    url: URL(string: "https://trezoa-api.trezoaserum.com")!, 
+    urlWebSocket: URL(string: "wss://trezoa-api.trezoaserum.com")!, 
     network: .mainnetBeta
 )
 
